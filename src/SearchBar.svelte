@@ -5,7 +5,8 @@
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSearch(inputValue.toLocaleLowerCase().replace(/ /g, ""));
+    // does this only work for English? lol
+    handleSearch(inputValue.toLocaleLowerCase().replace(/[^a-zA-Z0-9]/g, ""));
   };
 </script>
 
