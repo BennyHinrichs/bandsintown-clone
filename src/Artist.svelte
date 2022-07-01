@@ -7,6 +7,7 @@
 
 <section>
   <div class="scrim" />
+  <!-- TODO add loading state -->
   {#if Boolean($queryResult.data)}
     <div class="image-container">
       <img class="backdrop-image" src={$queryResult.data.image_url} alt={$queryResult.data.name} />
