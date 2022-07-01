@@ -16,13 +16,13 @@
         <div class="avatar">
           <img src={$queryResult.data.thumb_url} alt={$queryResult.data?.name} />
         </div>
-        <div>
-          <h1>{$queryResult.data.name || ''}</h1>
-          <h3>
-            {Intl.NumberFormat().format($queryResult.data.tracker_count)} Followers 
-            •
-            {Intl.NumberFormat().format($queryResult.data.upcoming_event_count)} Upcoming Concerts
-          </h3>
+        <div class="artist-text-info">
+          <h1>{$queryResult.data.name}</h1>
+          <div class="artist-numbers">
+            <h3>{Intl.NumberFormat().format($queryResult.data.tracker_count)} Followers</h3>
+            <h3 class="dot">•</h3>
+            <h3>{Intl.NumberFormat().format($queryResult.data.upcoming_event_count)} Upcoming Concerts</h3>
+          </div>
         </div>
       </div>
       <button>Follow</button>
@@ -40,6 +40,16 @@
     align-items: center;
     color: white;
     border-radius: 4px;
+  }
+
+  h1 {
+    font-weight: bold;
+  }
+  h3 {
+    font-weight: normal;
+  }
+  h1, h3 {
+    margin-block: 5px;
   }
 
   .scrim {
@@ -89,6 +99,19 @@
     width: 150px;
   }
 
+  .artist-text-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .artist-numbers {
+    display: flex;
+  }
+
+  .dot {
+    margin-inline: 5px;
+  }
+
   button {
     font-weight: bold;
     text-align: center;
@@ -107,8 +130,31 @@
     background-color: #38c8c8
   }
 
-  @media only screen and (min-width: 1024px) {
-    section {
+  @media only screen and (max-width: 1024px) {
+    section, .content, .artist-info, .artist-numbers {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .content, .artist-info {
+      gap: 20px;
+    }
+
+    .artist-text-info {
+      gap: 10px;
+      align-items: center;
+    }
+
+    .artist-numbers {
+      gap: 5px;
+    }
+
+    .dot {
+      display: none;
+    }
+
+    h1, h3 {
+      margin: 0;
     }
   }
 </style>

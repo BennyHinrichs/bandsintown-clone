@@ -12,6 +12,10 @@
 </main>
 
 <style>
+	:global(body) {
+		font-family: 'Syne', sans-serif;
+	}
+
   main {
 		display: flex;
 		flex-direction: column;

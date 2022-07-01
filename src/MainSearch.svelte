@@ -1,17 +1,12 @@
 <script lang="ts">
   import Artist from "./Artist.svelte";
-
-  let artistNameRaw = '';
+  import SearchBar from "./SearchBar.svelte";
+  
   let artistName = '';
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    artistName = artistNameRaw.toLocaleLowerCase().replace(/ /g, "");
+  const handleSearch = (value: string) => {
+    artistName = value;
   };
 </script>
 
-<form on:submit={handleSearch}>
-  <input bind:value={artistNameRaw} placeholder="Artist Name" />
-  <button>Search</button>
-</form>
+<SearchBar {handleSearch} />
 <Artist {artistName} />
